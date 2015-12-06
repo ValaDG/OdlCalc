@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="valeriodegiorgi.odlcalc.MainActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compila tutti i campi (Attrezzaggio 0 se già usato)"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/ora"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:hint="Ora"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/minuti"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:hint="Min"
+            android:inputType="number"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/Pezzi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Numero di Pezzi"
+        android:inputType="number"
+        />
+    <EditText
+        android:id="@+id/tempoPezzi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Tempo a Pezzo"
+        android:inputType="number"
+        />
+    <EditText
+        android:id="@+id/attrezzaggio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Attrezzaggio"
+        android:inputType="number"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chiudere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Devi chiudere alle: "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingBottom="30dp"
+            android:paddingTop="50dp"
+            />
+        <TextView
+            android:id="@+id/risultato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/calcola"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:text="CALCOLA"
+            android:textStyle="bold"
+            android:onClick="calcola"
+            android:textSize="24dp"/>
+    </RelativeLayout>
+</LinearLayout>
