@@ -42,12 +42,13 @@ public class MainActivity extends AppCompatActivity {
         double Minuti = (minFine * 100) * 0.6;
         int MinFine2 = (int) Minuti;
 
-        if (oraParziale > 12.50 && oraParziale < 13.50 || oraInizio == 12 && minutiInizio == 30) {
+        if (oraParziale >= 12.50 && oraParziale <= 13.50 || oraInizio <= 12 && oraParziale >= 12.50|| oraInizio <=12 && minutiInizio<=30 && minutiInizio>=0 &&oraParziale >= 12.50 ) {
             oraFine++;
         }
 
         TextView Ris = (TextView) findViewById(R.id.risultato);
-        Ris.setText("" + oraFine + " e minuti " + MinFine2);
+        String number = "" + oraFine + " e minuti " + MinFine2;
+        Ris.setText(number);
 
 
     }
