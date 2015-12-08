@@ -1,7 +1,9 @@
 package valeriodegiorgi.odlcalc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.AlarmClock;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
         TextView Ris = (TextView) findViewById(R.id.risultato);
         String number = "" + oraFine + " e minuti " + MinFine2;
         Ris.setText(number);
+
+        CheckBox checkboxAlarm = (CheckBox) findViewById(R.id.checkbox_sveglia1);
+        boolean isAlarmChecked = checkboxAlarm.isChecked();
+
+        if(isAlarmChecked) {
+            Intent alarm = new Intent(AlarmClock.ACTION_SET_ALARM);
+            alarm.putExtra(AlarmClock.EXTRA_MESSAGE, "Allarme ODL");
+            alarm.putExtra(AlarmClock.EXTRA_HOUR, oraFine);
+            alarm.putExtra(AlarmClock.EXTRA_MINUTES, MinFine2);
+            startActivity(alarm);
+
+        }
 
     }
 

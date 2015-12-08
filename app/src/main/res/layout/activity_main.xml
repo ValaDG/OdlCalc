@@ -33,7 +33,7 @@
             android:id="@+id/minuti"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
+            android:layout_marginRight="50dp"
             android:hint="Minuti"
             android:inputType="number"
             />
@@ -42,6 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mensa"/>
+        <CheckBox
+            android:id="@+id/checkbox_sveglia1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sveglia"/>
     </LinearLayout>
     <EditText
         android:id="@+id/Pezzi"
@@ -88,6 +93,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             />
+
     </LinearLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -102,4 +108,5 @@
             android:textSize="24dp"
             android:textStyle="bold"/>
     </RelativeLayout>
+
 </LinearLayout>
