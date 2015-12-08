@@ -1,5 +1,7 @@
 package valeriodegiorgi.odlcalc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,11 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void calcola(View view) {
@@ -56,7 +58,33 @@ public class MainActivity extends AppCompatActivity {
         String number = "" + oraFine + " e minuti " + MinFine2;
         Ris.setText(number);
 
-
     }
+
+    @Override
+    public void onPause() {
+        CheckBox mensaCheck = (CheckBox) findViewById(R.id.mensa_checkbox1);
+        super.onPause();
+        save(mensaCheck.isChecked());
+    }
+
+    @Override
+    public void onResume() {
+        CheckBox mensaCheck = (CheckBox) findViewById(R.id.mensa_checkbox1);
+        super.onResume();
+        mensaCheck.setChecked(load());
+    }
+
+    private void save(final boolean isChecked) {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("check", isChecked);
+        editor.commit();
+    }
+
+    private boolean load() {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("check", false);
+    }
+
 }
 
