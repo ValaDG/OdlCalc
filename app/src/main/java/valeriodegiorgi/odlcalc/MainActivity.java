@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         TextView minuti = (TextView) findViewById(R.id.minuti);
         int minutiInizio = Integer.parseInt(minuti.getText().toString());
 
-        if(minutiInizio<0 || minutiInizio >60) {
-            minuti.setError("I minuti devono avere un valore tra 0 e 60!");
+        if(minutiInizio<0 || minutiInizio >59) {
+            minuti.setError("I minuti devono avere un valore tra 0 e 59!");
         }
 
         TextView nPezzi = (TextView) findViewById(R.id.Pezzi);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (oraFine<0 || oraFine>23){
 
-            Ris.setText("Ricontrolla i dati inseriti!");
+            Ris.setText("Valore oltre le 24 ore o non corretto");
         }
         else {
 
