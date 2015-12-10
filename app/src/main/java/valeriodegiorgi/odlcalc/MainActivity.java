@@ -24,8 +24,16 @@ public class MainActivity extends AppCompatActivity {
         TextView ora = (TextView) findViewById(R.id.ora);
         int oraInizio = Integer.parseInt(ora.getText().toString());
 
+        if(oraInizio<0 || oraInizio >24) {
+            ora.setError("L'ora deve essere in formato 24 ore!");
+        }
+
         TextView minuti = (TextView) findViewById(R.id.minuti);
         int minutiInizio = Integer.parseInt(minuti.getText().toString());
+
+        if(minutiInizio<0 || minutiInizio >60) {
+            minuti.setError("I minuti devono avere un valore tra 0 e 60!");
+        }
 
         TextView nPezzi = (TextView) findViewById(R.id.Pezzi);
         int numPezzi = Integer.parseInt(nPezzi.getText().toString());
@@ -56,9 +64,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
         TextView Ris = (TextView) findViewById(R.id.risultato);
-        String number = "" + oraFine + " e minuti " + MinFine2;
-        Ris.setText(number);
+
+        if (oraFine<0 || oraFine>23){
+
+            Ris.setText("Ricontrolla i dati inseriti!");
+        }
+        else {
+
+            String number = "" + oraFine + " e minuti " + MinFine2;
+            Ris.setText(number);
+        }
 
         CheckBox checkboxAlarm = (CheckBox) findViewById(R.id.checkbox_sveglia1);
         boolean isAlarmChecked = checkboxAlarm.isChecked();
