@@ -3,15 +3,13 @@ package valeriodegiorgi.odlcalc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.AlarmClock;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.AlarmClock;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -47,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         TextView ora = (TextView) findViewById(R.id.ora);
         int oraInizio = Integer.parseInt(ora.getText().toString());
 
-        if(oraInizio<0 || oraInizio >24) {
+        if (oraInizio < 0 || oraInizio > 24) {
             ora.setError("L'ora deve essere in formato 24 ore!");
         }
 
         TextView minuti = (TextView) findViewById(R.id.minuti);
         int minutiInizio = Integer.parseInt(minuti.getText().toString());
 
-        if(minutiInizio<0 || minutiInizio >59) {
+        if (minutiInizio < 0 || minutiInizio > 59) {
             minuti.setError("I minuti devono avere un valore tra 0 e 59!");
         }
 
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox mensaCheck = (CheckBox) findViewById(R.id.mensa_checkbox1);
         boolean isMensaChecked = mensaCheck.isChecked();
 
-        if(isMensaChecked) {
+        if (isMensaChecked) {
             if (oraParziale >= 12.50 && oraParziale <= 13.50 || oraInizio <= 12 && oraParziale >= 12.50 || oraInizio <= 12 && minutiInizio <= 30 && minutiInizio >= 0 && oraParziale >= 12.50) {
                 oraFine++;
             }
@@ -90,11 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
         TextView Ris = (TextView) findViewById(R.id.risultato);
 
-        if (oraFine<0 || oraFine>23){
+        if (oraFine < 0 || oraFine > 23) {
 
             Ris.setText("Valore oltre le 24 ore o non corretto");
-        }
-        else {
+        } else {
 
             String number = "" + oraFine + " e minuti " + MinFine2;
             Ris.setText(number);
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkboxAlarm = (CheckBox) findViewById(R.id.checkbox_sveglia1);
         boolean isAlarmChecked = checkboxAlarm.isChecked();
 
-        if(isAlarmChecked) {
+        if (isAlarmChecked) {
             Intent alarm = new Intent(AlarmClock.ACTION_SET_ALARM);
             alarm.putExtra(AlarmClock.EXTRA_MESSAGE, "Allarme ODL");
             alarm.putExtra(AlarmClock.EXTRA_HOUR, oraFine);
@@ -139,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("check", false);
     }
+
+
 
 }
 
